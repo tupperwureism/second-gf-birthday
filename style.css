@@ -1,0 +1,311 @@
+/* ==========================================================================
+   MYCITYPOPGURL - 20TH BIRTHDAY (28 OKTOBER)
+   1980s City Pop x Parisian Jazz Vinyl Gatefold Edition
+   Design System: Antigravity Spatial Depth + Impeccable Craft
+   ========================================================================== */
+
+:root {
+  --ivory: #FAF7F2;
+  --kraft: #EFE5D4;
+  --kraft-dark: #DFCBB3;
+  --kraft-border: #D8C7AF;
+  --burgundy: #7A1C2E;
+  --burgundy-dark: #55111E;
+  --burgundy-light: #9B2940;
+  --amber: #C87D4B;
+  --amber-glow: #F3A066;
+  --denim: #3B628B;
+  --denim-dark: #254465;
+  --ink: #1E1A1B;
+  --ink-muted: #645C58;
+  --font-display: 'Bodoni Moda', serif;
+  --font-obi: 'Shippori Mincho', serif;
+  --font-body: 'Bricolage Grotesque', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+/* Global Reset & Smooth Behavior */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--ivory);
+  color: var(--ink);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Subtly Textured Paper Overlay */
+.vintage-grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 999;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Font Classes */
+.font-display { font-family: var(--font-display); }
+.font-obi { font-family: var(--font-obi); }
+.font-body { font-family: var(--font-body); }
+.font-mono { font-family: var(--font-mono); }
+
+/* Obi Strip (Vertical Japanese Vinyl Ribbon) */
+.obi-strip {
+  background: linear-gradient(180deg, var(--burgundy) 0%, var(--burgundy-dark) 100%);
+  color: #FFF6EA;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  box-shadow: 2px 0 14px rgba(0, 0, 0, 0.22);
+}
+
+/* Vinyl Record Simulation */
+.vinyl-disc {
+  background: radial-gradient(circle at center,
+    #2B1B1B 0%,
+    #2B1B1B 24%,
+    var(--burgundy) 25%,
+    var(--burgundy-dark) 32%,
+    #141112 33%,
+    #1A1718 42%,
+    #242021 44%,
+    #141112 46%,
+    #221E1F 56%,
+    #141112 58%,
+    #242021 70%,
+    #131011 72%,
+    #221E1F 86%,
+    #141112 88%,
+    #0A0909 100%
+  );
+  box-shadow: 
+    0 12px 35px rgba(0, 0, 0, 0.45),
+    inset 0 0 4px rgba(255, 255, 255, 0.15);
+  position: relative;
+}
+
+.vinyl-disc::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 45deg,
+    transparent 0deg,
+    rgba(255, 255, 255, 0.14) 40deg,
+    transparent 80deg,
+    rgba(255, 255, 255, 0.1) 130deg,
+    transparent 180deg,
+    rgba(255, 255, 255, 0.14) 220deg,
+    transparent 260deg,
+    rgba(255, 255, 255, 0.08) 320deg,
+    transparent 360deg
+  );
+  pointer-events: none;
+}
+
+@keyframes spinRecord {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.spinning {
+  animation: spinRecord 6s linear infinite;
+}
+
+.paused-spin {
+  animation-play-state: paused;
+}
+
+/* Floating 3D Vinyl Sleeve Container */
+.vinyl-sleeve-card {
+  background: #FFFDFC;
+  border: 1px solid var(--kraft-border);
+  box-shadow: 
+    0 20px 45px -10px rgba(122, 28, 46, 0.12),
+    0 8px 20px -5px rgba(0, 0, 0, 0.08);
+  transform-style: preserve-3d;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+}
+
+/* Hotspot Pulse Pins */
+.hotspot-pin {
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.hotspot-pin:hover {
+  transform: translate(-50%, -50%) scale(1.15);
+  filter: drop-shadow(0 0 8px rgba(243, 160, 102, 0.8));
+}
+
+.hotspot-ring {
+  animation: pulsePing 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes pulsePing {
+  75%, 100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+/* Candle Flame Animations */
+.candle-wick {
+  width: 3px;
+  height: 12px;
+  background: #3B2A20;
+  margin: 0 auto;
+}
+
+.candle-flame {
+  width: 18px;
+  height: 32px;
+  margin: 0 auto;
+  background: radial-gradient(ellipse at bottom, #FFFFFF 0%, #FFDF6B 25%, #FF7F11 65%, rgba(200, 30, 30, 0.4) 100%);
+  border-radius: 50% 50% 20% 20% / 60% 60% 40% 40%;
+  filter: drop-shadow(0 0 10px #FF9F1C) drop-shadow(0 0 24px rgba(243, 160, 102, 0.85));
+  animation: flameFlicker 1.4s ease-in-out infinite alternate;
+  transform-origin: bottom center;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+@keyframes flameFlicker {
+  0%   { transform: rotate(-1.5deg) scale(0.98, 1.02); }
+  25%  { transform: rotate(2deg) scale(1.02, 0.97); }
+  50%  { transform: rotate(-2deg) scale(0.97, 1.03); }
+  75%  { transform: rotate(1.5deg) scale(1.03, 0.99); }
+  100% { transform: rotate(-1deg) scale(1, 1.01); }
+}
+
+.flame-extinguished {
+  opacity: 0 !important;
+  transform: scale(0.2) translateY(-20px) !important;
+}
+
+/* Smoke puff when blown */
+.smoke-puff {
+  width: 8px;
+  height: 8px;
+  background: rgba(180, 180, 180, 0.6);
+  border-radius: 50%;
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+  opacity: 0;
+}
+
+@keyframes smokeRise {
+  0% {
+    opacity: 0.8;
+    transform: translateX(-50%) scale(1);
+    filter: blur(1px);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-40%, -45px) scale(3.5);
+    filter: blur(6px);
+  }
+}
+
+.animate-smoke {
+  animation: smokeRise 1.6s forwards ease-out;
+}
+
+/* Perforated VIP Ticket Stubs */
+.ticket-card {
+  background: #FFFDF9;
+  border: 1.5px dashed var(--kraft-border);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.ticket-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(122, 28, 46, 0.08);
+  border-color: var(--amber);
+}
+
+.ticket-notch-left, .ticket-notch-right {
+  position: absolute;
+  top: 50%;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background-color: var(--ivory);
+  border: 1.5px dashed var(--kraft-border);
+  transform: translateY(-50%);
+  z-index: 10;
+}
+.ticket-notch-left { left: -12px; }
+.ticket-notch-right { right: -12px; }
+
+/* Red Stamp Slam Animation */
+.stamp-slam {
+  animation: slamStamp 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes slamStamp {
+  0% {
+    opacity: 0;
+    transform: scale(2.2) rotate(-18deg);
+  }
+  70% {
+    opacity: 0.9;
+    transform: scale(0.92) rotate(-9deg);
+  }
+  100% {
+    opacity: 0.85;
+    transform: scale(1) rotate(-8deg);
+  }
+}
+
+/* Glassmorphic Surfaces */
+.glass-panel {
+  background: rgba(255, 253, 250, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(216, 199, 175, 0.5);
+}
+
+/* Custom Scrollbar for Smooth UX */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--ivory);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--kraft-border);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--amber);
+}
+
+/* Reduced Motion Safety */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .spinning {
+    animation: none !important;
+  }
+}
